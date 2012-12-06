@@ -1,6 +1,7 @@
 <?php
 global $current_user, $cid;
       get_currentuserinfo();
+
 ?>
 <div class="accordion" id="accordion2"><!-- start.accordion2 -->  
   <?php if(current_user_can('transfer_pin')): ?>
@@ -35,9 +36,9 @@ $counter = 1;
                     <td>
                         <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
                     </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td><?php product_reserved_pin();?></td>
+                    <td><?php product_activated_pin();?></td>
+                    <td><?php product_total_pin();?></td>
                 </tr>
             <?php $counter++; ?>                
             <?php endwhile; ?>
