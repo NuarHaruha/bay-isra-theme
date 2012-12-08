@@ -65,7 +65,10 @@
                     <?php t('small',$sponsor_code, array('class'=>'db muted'));?>
                 </td> 
                 <td>
-                    <?php t('a',_t('small',$invoice_code), array('href'=>'/purchase/checkout-complete/?get_invoice='.$invoice->invoice_id) );?>
+                    <?php
+                        $uri = '/purchase/checkout-complete/?get_invoice='.$invoice->invoice_id.'&ordered_by='.$invoice->ordered_by.'&view_invoice=1';
+                    ?>
+                    <?php t('a',_t('small',$invoice_code), array('href'=> $uri) );?>
                 </td>
                 <td><small class="db">
                     Quantity: <?php echo count($items['product_id']); ?> unit(s) of</small>

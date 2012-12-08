@@ -208,7 +208,7 @@ footer{
 }
 
 .txt-c{
-    text-align:center
+    text-align:center !important;
 }
 
 .pad-top-bottom{
@@ -380,12 +380,15 @@ background-image: -webkit-gradient(radial, center 40%, 700, center 40%, 0, from(
 background-image: -moz-radial-gradient(transparent, #111);    
 }
 
-.bg-trans,.bg-trans-50, .bg-trans-70{
+.bg-trans,.bg-trans-50, .bg-trans-70
+, #data-products_filter input
+ {
     background: transparent url('../img/patterns/bg.png') repeat;
 }
 
 
-.bg-trans-50{
+.bg-trans-50,
+#data-products tbody tr.even:hover, #data-products tbody tr.even td{
     background-image: url('../img/patterns/bg-50.png');
 }
 
@@ -653,4 +656,51 @@ background-image: -moz-radial-gradient(transparent, #111);
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   background-color: #000;
+}
+
+#data-results .progress{
+    margin-bottom: 0pt !important;
+
+}
+
+#data-results .progress .bar{
+    color:#000 !important;
+    padding-left:20px;
+}
+
+
+/**
+ * data tables
+ */
+
+#data-products_filter{
+    float:right;
+    padding-bottom: 10px;
+}
+
+#data-products_length,
+#data-products_info{
+    float:left;
+}
+
+#data-products_filter input{
+    border: 1px solid #222;
+}
+
+/* product length select box*/
+#data-products_length select{
+    width: 60px;
+}
+
+/* pagination wrapper */
+#data-products_paginate{
+    padding-bottom: 20px;
+    width: 130px;
+    clear: right;
+    margin-left: auto;
+}
+
+/** link next; */
+#data-products_next{
+    padding-right: 20px;
 }

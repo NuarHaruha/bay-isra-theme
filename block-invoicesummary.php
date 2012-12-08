@@ -1,12 +1,26 @@
 <?php global $current_user; $cid = $current_user->ID;?>
-<?php $invoices = (isset($_REQUEST['get_invoice'])) ? mc_get_last_invoices_by_id($cid, $_REQUEST['get_invoice']) : mc_get_last_invoices_by_id($cid);?>   
-<?php $invoice = $invoices[0];?>
-<section id="invoice-chart-data"><!-- begin.invoice-chart-data -->
+<?php
+    $is_view = false;
+    if (!isset($_REQUEST['view_invoice'])){
+        $invoices = (isset($_REQUEST['get_invoice'])) ? mc_get_last_invoices_by_id($cid, $_REQUEST['get_invoice']) : mc_get_last_invoices_by_id($cid);
+        $invoice = $invoices[0];
+        $is_view = false;
+    } else {
+        $is_view = true;
+        $invoices = get_order_invoice($_REQUEST['ordered_by'], $_REQUEST['get_invoice']);
+        $invoice = $invoices[0];
+    }
+?>
+
+
+<section id="invoice-summary-data"><!-- begin.invoice-chart-data -->
 <div class="block bg-trans-50 border-light border-radius">
     <div class="content-header">
         <h4 class="page-title">Invoice Summary</h4>
             <div>
-            <p class="pull-right">Invoice ID: <strong><?php echo mc_get_invoice_id($invoice->invoice_id,$invoice->stockist_id);?></strong>&nbsp;</p>
+            <p class="pull-right">Invoice ID: <strong><?php echo mc_get_invoice_id($invoice->invoice_id,$invoice->stockist_id);?></strong>&nbsp;
+
+            </p>
         <p>Ordered on <i class="icon-time"></i> <?php echo date("D d M Y", strtotime($invoice->created_date));?></p>
     </div>
         <hr />
@@ -52,3 +66,4 @@
     </div>
 </div>
 </section>
+<script src="<?php echo get_template_directory_uri(); ?>/library/js/print.js"></script>

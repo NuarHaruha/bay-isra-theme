@@ -33,7 +33,8 @@
             <?php $invoice_code = mc_get_invoice_id($invoice->invoice_id, $invoice->stockist_id);?>
             <tr>
                 <td><small><?php echo $counter;?></small></td>
-                <td><?php t('a',_t('small',$invoice_code), array('href'=>'/purchase/checkout-complete/?get_invoice='.$invoice->invoice_id) );?></td>
+                <?php $uri = '/purchase/checkout-complete/?get_invoice='.$invoice->invoice_id.'&ordered_by='.$invoice->ordered_by.'&view_invoice=1';?>
+                <td><?php t('a',_t('small',$invoice_code), array('href'=> $uri) );?></td>
                 <td><i class="icon-time"></i> 
                     <?php t('small',date("D, d M Y - h:m",strtotime($invoice->created_date)),array('class'=>'date date-invoice'));?>
                 </td>

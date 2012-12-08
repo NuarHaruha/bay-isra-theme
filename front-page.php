@@ -106,7 +106,7 @@
                     <?php if(current_user_can('transfer_pin')): ?>
                     <div class="span4 main-icon">
                         <a href="/purchase/order/" title="Recent Order">
-                        <span class="db txt-c"><i class="icn-48 icn-order"></i>Recent Order</span>
+                        <span class="db txt-c"><i class="icn-48 icn-order"></i>Members Order</span>
                         </a>
                     </div>                    
                     <?php endif; ?>    
@@ -136,7 +136,7 @@
                 <div class="row-fluid">    
                
                     <div class="span4 main-icon">
-                        <a href="#">
+                        <a href="/finances/bonus/?transaction=downlines">
                         <span class="db txt-c"><i class="icn-48 icn-money"></i>Bonus Statement</span>
                         </a>
                     </div>

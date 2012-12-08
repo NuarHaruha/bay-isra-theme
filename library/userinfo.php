@@ -2,7 +2,7 @@
 /**
  * userinfo functions
  * 
- * @author nuarharuha 
+ * @author Nuarharuha <nhnoah+bay-isra@gmail.com> 
  */
  
  

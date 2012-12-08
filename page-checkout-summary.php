@@ -3,7 +3,7 @@
 Template Name: Checkout Summary
 */
 ?>
-
+<?php $is_view_invoice = (isset($_REQUEST['view_invoice'])) ? true : false; ?>
 <?php get_header('frontpage');?>
 <?php global $current_user; $cid = $current_user->ID;?>
 			
@@ -20,20 +20,27 @@ Template Name: Checkout Summary
 							<div class="page-header">                            
                             <h2 class="page-title">
                             <img src="<?php echo get_template_directory_uri().'';?>/library/img/cart-purple.png" width="32" style="maring-bottom:10px"/>
+                            <?php if (!$is_view_invoice):  ?>
                             <?php the_title(); ?></h2>
+                            <?php else: ?>
+                                Order Invoice
+                            <?php endif; ?>
                             </div>
 						
 						</header> <!-- end article header -->
 					
 						<section id="catalogue" class="post_content">
-                        <div class="row-fluid">                                                                                 
+                        <div class="row-fluid">
+                            <?php if (!$is_view_invoice):  ?>
                             <?php get_template_part('block','userinfo');?>
                             <?php get_template_part('block','stokisinfo');?>
+                            <?php endif; ?>
                             <?php get_template_part('block','invoicesummary');?>
                             <?php the_content();?>      
                             <section id="purchase-navigation">
                                 <div class="block bg-trans">
                                     <div class="content clearfix">
+                                        <button class="btn btn-small btn-inverse" id="print"><i class="icon-print"></i> Print</button>
                                         <p class="btn-group pull-right">
                                             <a href="/" class="btn btn-small btn-inverse"><i class="icon-home"></i> Home</a>
                                             <a href="/purchase/invoices/" class="btn btn-small btn-inverse">Purchase History</a>                                            
@@ -41,6 +48,15 @@ Template Name: Checkout Summary
                                         </p>                                    
                                     </div>
                                 </div>
+                                <script>
+                                    jQuery(document).ready(function($){
+                                        $('#print').click(function(e){
+                                            e.preventDefault();
+                                            $('#invoice-summary-data').jqprint();
+                                        })
+
+                                    });
+                                </script>
                             </section>                      
                             <section id="purchase-history-notice">
                                 <div class="block bg-trans-50 border-light">
