@@ -719,4 +719,32 @@ function mdag_breadcrumbs() {
         }
     } 
 }
+
+function mc_get_header( $name = null ) {
+    do_action( 'get_header', $name );
+
+    $templates = array();
+    if ( isset($name) )
+        $templates[] = "/templates/header/{$name}.php";
+
+    $templates[] = 'header.php';
+
+    // Backward compat code will be removed in a future release
+    if ('' == locate_template($templates, true))
+        load_template( ABSPATH . WPINC . '/theme-compat/header.php');
+}
+
+function mc_get_footer( $name = null ) {
+    do_action( 'get_footer', $name );
+
+    $templates = array();
+    if ( isset($name) )
+        $templates[] = "/templates/footer/{$name}.php";
+
+    $templates[] = 'footer.php';
+
+    // Backward compat code will be removed in a future release
+    if ('' == locate_template($templates, true))
+        load_template( ABSPATH . WPINC . '/theme-compat/footer.php');
+}
 ?>
