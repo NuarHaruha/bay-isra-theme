@@ -747,4 +747,6 @@ function mc_get_footer( $name = null ) {
     if ('' == locate_template($templates, true))
         load_template( ABSPATH . WPINC . '/theme-compat/footer.php');
 }
+
+
 ?>

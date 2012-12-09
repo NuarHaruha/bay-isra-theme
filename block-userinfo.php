@@ -1,7 +1,4 @@
-<?php
-global $current_user, $cid;
-      get_currentuserinfo();
-?>
+<?php global $current_user, $cid;  get_currentuserinfo();?>
 <div class="accordion" id="accordion2"><!-- start.accordion2 -->
   <div class="accordion-group bg-trans">
     <div class="accordion-heading">

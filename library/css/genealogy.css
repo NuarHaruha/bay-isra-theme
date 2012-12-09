@@ -36,8 +36,9 @@
 
 #infovis {
     position:relative;
+    /*
     width:600px;
-    height:600px;
+    height:600px;*/
     margin:auto;
     overflow:hidden;
 }
@@ -68,4 +69,27 @@
     font-size:10px;
     font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
     padding:7px;
+}
+
+#genealogy-info{
+    position: absolute;
+    top: 130px;
+    right: 208px;
+    width: 220px;
+    overflow: hidden;
+}
+
+#inner-details{
+    color: #b0c4de;
+    font-size: 12px;
+}
+
+#inner-details h4{
+}
+
+
+#inner-details span{
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
 }

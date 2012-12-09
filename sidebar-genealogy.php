@@ -3,7 +3,4 @@
                 <h1 class="page-title">Summary</h1>
                 </div>
                 <div id="inner-details"></div>
-
-
-
 				</div>
