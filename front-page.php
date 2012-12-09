@@ -77,7 +77,7 @@
                     </div>                    
                     <?php endif;?>
                     <div class="span4 main-icon">
-                        <a href="/laporan/genealogy">
+                        <a href="/laporan/genealogy-r/">
                         <span class="db txt-c"><i class="icn-48 icn-chartarea"></i>View Geneleogy</span>
                         </a>
                     </div>
