@@ -8,7 +8,7 @@ global $current_user, $cid;
   <div class="accordion-group bg-trans-50">
     <div class="accordion-heading">
         <div class="content-header">
-            <h4 class="page-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Pin Summary</a></h4>
+            <h4 class="page-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Pin Summary / Products in Stock</a></h4>
         </div>          
     </div>      
 <?php 

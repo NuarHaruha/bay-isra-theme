@@ -1,22 +1,22 @@
+<?php global $current_user; $cid = $current_user->ID;?>
+<?php $invoices = mc_get_invoices_for_id($cid, 'pending');?>
 <section id="product-history-data"><!-- begin.product-history-data -->
 <div class="block bg-trans-50 border-light border-radius">
     <div class="content-header">
-        <h4 class="page-title">Members PIN request</h4>
+        <h4 class="page-title">Members PIN request / Product Orders (<?php echo count($invoices);?>)</h4>
         <hr />
     </div>
     <div class="content">
-    <?php global $current_user; $cid = $current_user->ID;?>  
-    <?php $invoices = mc_get_invoices_for_id($cid, 'pending');?>        
     <?php $incremental_amount = 0; ?>
     <?php $incremental_unit = 0; ?>         
-    <table id="invoices-table" class="table">
+    <table id="data-products" class="table">
         <thead class="bg-trans">
             <tr>
                 <!--
                 <th>#</th> -->
                 <th>Date</th>
-                <th>Name</th>
-                <th>Sponsor</th>
+                <th>Order by</th><!--
+                <th>Sponsor</th>-->
                 <th>Invoice</th>                
                 <th>Items</th>
                 <th>Amount</th>                
@@ -59,19 +59,18 @@
                 <td class="row-name">
                     <?php t('small',$name);?>
                     <?php t('small',$code, array('class'=>'db muted'));?>
-                </td>     
+                </td> <!--
                 <td class="row-sponsor">
                     <?php t('small',$sponsor_name);?>
                     <?php t('small',$sponsor_code, array('class'=>'db muted'));?>
-                </td> 
+                </td> -->
                 <td>
                     <?php
                         $uri = '/purchase/checkout-complete/?get_invoice='.$invoice->invoice_id.'&ordered_by='.$invoice->ordered_by.'&view_invoice=1';
                     ?>
                     <?php t('a',_t('small',$invoice_code), array('href'=> $uri) );?>
                 </td>
-                <td><small class="db">
-                    Quantity: <?php echo count($items['product_id']); ?> unit(s) of</small>
+                <td>
                     <span class="muted"><?php echo get_sku_list($items['sku']); ?></span>
                     
                 </td>
@@ -96,7 +95,7 @@
         <?php if(has_invoices($cid)): ?>
         <tfoot>
             <tr>
-                <th colspan="4">Total</th>
+                <th colspan="3">Total</th>
                 <th>Quantity <?php echo $incremental_unit;?></th>
                 <th colspan="3"><span id="total-amount-spend">RM <?php echo apply_filters('mc_currency',$incremental_amount); ?>   </span></th>
                 
@@ -138,3 +137,17 @@
     </div>
 </div>
 </section><!-- end.product-history-data -->
+<?php if (!empty($invoices) ): ?>
+<script>jQuery(document).ready(function($){
+    $('#data-products').dataTable({
+        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    });
+
+    // paginate wrapper
+    $('#data-products_paginate').addClass('btn-group');
+    // paginate links
+    $('#data-products_paginate a').addClass('btn btn-small');
+
+})  ;</script>
+<script src="<?php echo get_template_directory_uri(); ?>/library/js/dtable.min.js"></script>
+<?php endif; ?>
