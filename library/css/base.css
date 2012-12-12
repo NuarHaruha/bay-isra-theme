@@ -31,6 +31,9 @@ footer hr{
     border-bottom-color:#0f0d21;
 }
 
+.table{
+    clear:left;}
+
 .table-bordered{
     border-color:#617764
 }
