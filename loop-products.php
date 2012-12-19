@@ -7,7 +7,7 @@
     </div>
     <div class="content">
 <?php
-    $product_args = array( 'post_type' => 'products', 'posts_per_page' => 10 );
+    $product_args = array( 'post_type' => 'products');
     $loop = new WP_Query( $product_args );
     ?>
     <table class="table" id="products-cart">   

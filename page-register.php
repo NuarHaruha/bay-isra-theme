@@ -5,8 +5,8 @@ Template Name: Register New
 ?>
 <?php do_action('mc_register_user',$_REQUEST)?>
 <?php get_header('frontpage'); ?>
-			
-			<div id="content" class="clearfix row-fluid">
+
+<div id="content" class="clearfix row-fluid" xmlns="http://www.w3.org/1999/html">
 			
 				<div id="main" class="span12 clearfix bg-trans" role="main">
 
@@ -37,7 +37,22 @@ Template Name: Register New
 					
 						<section class="post_content">
 							<?php the_content(); ?>
-                            <?php get_template_part('form','register');?>
+
+                            <?php if (stockist_can_register()): ?>
+                            <?php get_template_part('form','register'); ?>
+                            <?php else: ?>
+                                <div class="bg-trans block">
+                                    <h4>Notice</h4>
+                                    <p>
+                                        We are very sorry, you don't have a "Starter Kit" to register a new members.
+                                    </p>
+                                    <p>
+                                        <a href="/purchase/product/" class="btn btn-small btn-secondary" title="Purchase Starter Kit">Purchase Starter Kit</a>
+                                    </p>
+
+                                </div>
+                            <?php endif;?>
+
 					
 						</section> <!-- end article section -->
 						
